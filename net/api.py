@@ -1,9 +1,8 @@
 import urequests
 
-def send_datapoints(datapoints):
-    base = "https://example.org/"
-    url = base + "/api/upload_data"
-    data = {"datapoints": datapoints}
+def send_datapoints(datapoint, url_base):
+    url = url_base + "/api/upload_data"
+    data = datapoint
 
     rsp = urequests.post(url, json=data)
     rsp_parsed = response.json()

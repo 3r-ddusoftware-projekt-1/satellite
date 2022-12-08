@@ -13,17 +13,9 @@ class BMP:
 
         datapoints.append(
             {
-                "quantity": "temperature",
-                "value": self.bmp_sensor.temperature,
-                "time": 0
+                "temperature": self.bmp_sensor.temperature,
+                "timestamp": 0
             },
-        )
-        datapoints.append(
-            {
-                "quantity": "pressure",
-                "value": self.bmp_sensor.pressure,
-                "time": 0
-            }
         )
 
         return datapoints
