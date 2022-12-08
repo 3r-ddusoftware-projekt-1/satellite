@@ -10,17 +10,6 @@ def main():
     i2c = I2C(0, scl=Pin(22), sda=Pin(21))
     display = Display(i2c)
 
-def wlan_status_lookup(status):
-    status_lookup_table = {
-        network.STAT_IDLE: "STAT_IDLE",
-        network.STAT_CONNECTING: "STAT_CONNECTING",
-        network.STAT_WRONG_PASSWORD: "STAT_WRONG_PASSWORD",
-        network.STAT_NO_AP_FOUND: "STAT_NO_AP_FOUND",
-        network.STAT_CONNECT_FAIL: "STAT_CONNECT_FAIL",
-        network.STAT_GOT_IP: "STAT_GOT_IP"
-    }
-    return status_lookup_table[status]
-
     unsent_datapoints = []
 
     try:
@@ -30,6 +19,7 @@ def wlan_status_lookup(status):
         from net.wlan import wlan_connect, wlan_status_lookup
         wlan = wlan_connect(WIFI_SSID, WIFI_PW)
         while not wlan.isconnected():
+            #display.write("Ld WLA.." + wlan.status())
             pass
         display.write("Ld API..")
         from net.api import send_datapoints
